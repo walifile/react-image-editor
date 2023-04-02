@@ -10,10 +10,10 @@ const filterOptions = [
 function App() {
   const [previewImg, setPreviewImg] = useState(null);
   const [brightness, setBrightness] = useState("100");
-  const [disable, setDisable] = useState(true);
   const [saturation, setSaturation] = useState("100");
   const [inversion, setInversion] = useState("0");
   const [grayscale, setGrayscale] = useState("0");
+  const [disable, setDisable] = useState(true);
   const [rotate, setRotate] = useState(0);
   const [flipHorizontal, setFlipHorizontal] = useState(1);
   const [flipVertical, setFlipVertical] = useState(1);
@@ -42,6 +42,7 @@ function App() {
 
   const applyFilter = () => {
     previewImgRef.current.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+    previewImgRef.current.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
   };
 
   const resetFilter = () => {
@@ -121,6 +122,18 @@ function App() {
         setGrayscale(event.target.value);
     }
   }
+  const handleRotate = (option) => {
+    if (option === "left") {
+      setRotate(rotate - 90);
+    } else if (option === "right") {
+      setRotate(rotate + 90);
+    } else if (option === "horizontal") {
+      setFlipHorizontal(flipHorizontal === 1 ? -1 : 1);
+    } else {
+      setFlipVertical(flipVertical === 1 ? -1 : 1);
+    }
+    applyFilter();
+  };
   return (
     <div className="container disable">
       <h2>Easy Image Editor</h2>
@@ -166,16 +179,19 @@ function App() {
           <div className="rotate">
             <label className="title">Rotate & Flip</label>
             <div className="options">
-              <button id="left">
+              <button id="left" onClick={() => handleRotate("left")}>
                 <i className="fa-solid fa-rotate-left"></i>
               </button>
-              <button id="right">
+              <button id="right" onClick={() => handleRotate("right")}>
                 <i className="fa-solid fa-rotate-right"></i>
               </button>
-              <button id="horizontal">
+              <button
+                id="horizontal"
+                onClick={() => handleRotate("horizontal")}
+              >
                 <i className="bx bx-reflect-vertical"></i>
               </button>
-              <button id="vertical">
+              <button id="vertical" onClick={() => handleRotate("vertical")}>
                 <i className="bx bx-reflect-horizontal"></i>
               </button>
             </div>
