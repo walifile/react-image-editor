@@ -17,9 +17,6 @@ function App() {
   const [rotate, setRotate] = useState(0);
   const [flipHorizontal, setFlipHorizontal] = useState(1);
   const [flipVertical, setFlipVertical] = useState(1);
-  const [selectedFilter, setSelectedFilter] = useState("brightness");
-  const [sliderMax, setSliderMax] = useState(null);
-  const [filterValue, setFilterValue] = useState(null);
   const fileInputRef = useRef(null);
   const previewImgRef = useRef(null);
   const filterNameRef = useRef(null);
@@ -27,14 +24,6 @@ function App() {
   const resetFilterBtnRef = useRef(null);
   const [activeFilter, setActiveFilter] = useState("brightness");
   const [sliderValue, setSliderValue] = useState(100);
-  const [filterType, setFilterType] = useState("brightness");
-  const [filterName, setFilterName] = useState("");
-
-  function handleFilterClick(filter) {
-    setActiveFilter(filter);
-    setSelectedFilter(filter);
-    // perform filtering logic here
-  }
   const loadImage = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -63,7 +52,8 @@ function App() {
     setRotate(0);
     setFlipHorizontal(1);
     setFlipVertical(1);
-    setSelectedFilter("brightness");
+    setActiveFilter("brightness");
+    setSliderValue(100);
     applyFilter();
   };
 
@@ -100,29 +90,24 @@ function App() {
 
   function handleFilterClick(option) {
     setActiveFilter(option.id);
-    setFilterName(option.name);
 
     switch (option.id) {
       case "brightness":
         setSliderValue(brightness);
-        setFilterType("brightness");
         break;
       case "saturation":
         setSliderValue(saturation);
-        setFilterType("saturation");
         break;
       case "inversion":
         setSliderValue(inversion);
-        setFilterType("inversion");
         break;
       default:
         setSliderValue(grayscale);
-        setFilterType("grayscale");
     }
   }
   function handleSliderChange(event) {
     setSliderValue(event.target.value);
-    switch (filterType) {
+    switch (activeFilter) {
       case "brightness":
         setBrightness(event.target.value);
         break;
@@ -159,7 +144,7 @@ function App() {
             <div className="slider">
               <div className="filter-info">
                 <p className="name" ref={filterNameRef}>
-                  {filterName}
+                  {activeFilter}
                 </p>
                 <p className="value" ref={filterValueRef}>
                   {`${sliderValue}%`}
@@ -169,7 +154,7 @@ function App() {
                 type="range"
                 min="0"
                 max={
-                  filterType === "brightness" || filterType === "saturation"
+                  activeFilter === "brightness" || activeFilter === "saturation"
                     ? "200"
                     : "100"
                 }
@@ -210,7 +195,7 @@ function App() {
         </div>
       </div>
       <div className="controls">
-        <button className="reset-filter" ref={resetFilterBtnRef}>
+        <button className="reset-filter" onClick={resetFilter}>
           Reset Filters
         </button>
         <div className="row">
