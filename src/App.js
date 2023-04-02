@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 
 const filterOptions = [
@@ -17,29 +17,16 @@ function App() {
   const [rotate, setRotate] = useState(0);
   const [flipHorizontal, setFlipHorizontal] = useState(1);
   const [flipVertical, setFlipVertical] = useState(1);
-  const fileInputRef = useRef(null);
-  const previewImgRef = useRef(null);
-  const filterNameRef = useRef(null);
-  const filterValueRef = useRef(null);
-  const resetFilterBtnRef = useRef(null);
   const [activeFilter, setActiveFilter] = useState("brightness");
   const [sliderValue, setSliderValue] = useState(100);
+  const fileInputRef = useRef(null);
+  const previewImgRef = useRef(null);
   const loadImage = (e) => {
     const file = e.target.files[0];
     if (!file) return;
     setPreviewImg(file);
-    // previewImgRef.current.src = URL.createObjectURL(file);
-    // previewImgRef.current.addEventListener("load", () => {
-    //   resetFilter();
-    // });
+    resetFilter();
   };
-  useEffect(() => {
-    if (previewImg) {
-      // resetFilterBtnRef.current.click();
-      // setDisable(false);
-    }
-  }, [previewImg]);
-
   const applyFilter = () => {
     previewImgRef.current.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
     previewImgRef.current.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
@@ -89,7 +76,7 @@ function App() {
     image.src = URL.createObjectURL(previewImg);
   };
 
-  function handleFilterClick(option) {
+  const handleFilterClick = (option) => {
     setActiveFilter(option.id);
 
     switch (option.id) {
@@ -105,8 +92,8 @@ function App() {
       default:
         setSliderValue(grayscale);
     }
-  }
-  function handleSliderChange(event) {
+  };
+  const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
     switch (activeFilter) {
       case "brightness":
@@ -121,7 +108,7 @@ function App() {
       default:
         setGrayscale(event.target.value);
     }
-  }
+  };
   const handleRotate = (option) => {
     if (option === "left") {
       setRotate(rotate - 90);
@@ -156,12 +143,8 @@ function App() {
             </div>
             <div className="slider">
               <div className="filter-info">
-                <p className="name" ref={filterNameRef}>
-                  {activeFilter}
-                </p>
-                <p className="value" ref={filterValueRef}>
-                  {`${sliderValue}%`}
-                </p>
+                <p className="name">{activeFilter}</p>
+                <p className="value">{`${sliderValue}%`}</p>
               </div>
               <input
                 type="range"
