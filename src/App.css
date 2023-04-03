@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background: #e3f2fd;
+  background: #fee1ec;
 }
 .container {
   width: 850px;
@@ -72,8 +72,8 @@ body {
 }
 .filter button.active {
   color: #fff;
-  border-color: #5372f0;
-  background: #5372f0;
+  border-color: #f4367d;
+  background: #f4367d;
 }
 .filter .slider {
   margin-top: 12px;
@@ -87,7 +87,7 @@ body {
 .filter .slider input {
   width: 100%;
   height: 5px;
-  accent-color: #5372f0;
+  accent-color: #f4367d;
 }
 .editor-panel .rotate {
   margin-top: 17px;
@@ -104,8 +104,8 @@ body {
 }
 .rotate .options button:active {
   color: #fff;
-  background: #5372f0;
-  border-color: #5372f0;
+  background: #f4367d;
+  border-color: #f4367d;
 }
 .wrapper .preview-img {
   flex-grow: 1;
@@ -148,8 +148,8 @@ body {
 }
 .controls .save-img {
   margin-left: 5px;
-  background: #5372f0;
-  border: 1px solid #5372f0;
+  background: #f4367d;
+  border: 1px solid #f4367d;
 }
 
 @media screen and (max-width: 760px) {
