@@ -9,16 +9,15 @@ const filterOptions = [
 ];
 function App() {
   const [previewImg, setPreviewImg] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("brightness");
+  const [sliderValue, setSliderValue] = useState(100);
   const [brightness, setBrightness] = useState("100");
   const [saturation, setSaturation] = useState("100");
   const [inversion, setInversion] = useState("0");
   const [grayscale, setGrayscale] = useState("0");
-  const [disable, setDisable] = useState(true);
   const [rotate, setRotate] = useState(0);
   const [flipHorizontal, setFlipHorizontal] = useState(1);
   const [flipVertical, setFlipVertical] = useState(1);
-  const [activeFilter, setActiveFilter] = useState("brightness");
-  const [sliderValue, setSliderValue] = useState(100);
   const fileInputRef = useRef(null);
   const previewImgRef = useRef(null);
   const loadImage = (e) => {
@@ -27,6 +26,7 @@ function App() {
     setPreviewImg(file);
     resetFilter();
   };
+
   const applyFilter = () => {
     previewImgRef.current.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
     previewImgRef.current.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
@@ -42,7 +42,6 @@ function App() {
     setFlipVertical(1);
     setActiveFilter("brightness");
     setSliderValue(100);
-    applyFilter();
   };
 
   const saveImage = () => {
@@ -119,10 +118,9 @@ function App() {
     } else {
       setFlipVertical(flipVertical === 1 ? -1 : 1);
     }
-    applyFilter();
   };
   return (
-    <div className="container disable">
+    <div className={`container ${!previewImg ? "disable" : ""}`}>
       <h2>Easy Image Editor</h2>
       <div className="wrapper">
         <div className="editor-panel">
