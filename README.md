@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Easy Image Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Easy Image Editor is a simple web-based image editor that allows you to apply filters and transformations to your images. The editor is built with React and uses canvas to manipulate images.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Apply brightness, saturation, inversion, and grayscale filters
+- Rotate and flip the image
+- Save the edited image
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To run Easy Image Editor on your local machine, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository: `git clone https://github.com/walifile/react-image-editor.git`
+2. Navigate to the project directory: `cd react-image-editor`
+3. Install the dependencies: `npm install`
+4. Start the development server: `npm start`
+5. Open http://localhost:3000 in your browser to view the editor.
 
-### `npm test`
+## How to Use
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Click the "Choose File" button to select an image.
+2. Use the filter buttons to apply filters to the image.
+3. Use the slider to adjust the value of the active filter.
+4. Use the rotate and flip buttons to transform the image.
+5. Click the "Save" button to download the edited image.
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React
+- CSS
+- Canvas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Support
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you found this project helpful and want to support me, you can buy me a coffee at:
 
-### `npm run eject`
+[![Buy me a coffee](https://img.shields.io/badge/-Buy%20me%20a%20coffee-orange?logo=buy-me-a-coffee&logoColor=white&labelColor=orange&color=white)](https://www.buymeacoffee.com/waliahmad9)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## My YouTube Channel
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Check out my YouTube channel, Coding Circulate, for more web development content: [Coding Circulate](https://www.youtube.com/@codingcirculate/featured)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks for checking out this project! If you have any questions or suggestions, feel free to reach out to me on GitHub or my YouTube channel.
